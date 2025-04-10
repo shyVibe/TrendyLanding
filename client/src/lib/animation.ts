@@ -1,4 +1,4 @@
-interface Triangle {
+interface Circle {
   size: number;
   x: number;
   y: number;
@@ -12,11 +12,11 @@ interface Triangle {
   color: string;
 }
 
-export function createTrianglesAnimation(canvas: HTMLCanvasElement) {
+export function createCirclesAnimation(canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return () => {};
   
-  const triangles: Triangle[] = [];
+  const circles: Circle[] = [];
   let animationFrameId: number;
   let isActive = true;
   
@@ -25,9 +25,9 @@ export function createTrianglesAnimation(canvas: HTMLCanvasElement) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
-    // Recreate triangles when dimensions change
-    triangles.length = 0;
-    createTriangles();
+    // Recreate circles when dimensions change
+    circles.length = 0;
+    createCircles();
   };
   
   setCanvasDimensions();
@@ -38,11 +38,11 @@ export function createTrianglesAnimation(canvas: HTMLCanvasElement) {
     return colors[Math.floor(Math.random() * colors.length)];
   }
   
-  function createTriangles() {
-    const triangleCount = Math.min(30, Math.floor((canvas.width * canvas.height) / 20000));
+  function createCircles() {
+    const circleCount = Math.min(30, Math.floor((canvas.width * canvas.height) / 20000));
     
-    for (let i = 0; i < triangleCount; i++) {
-      triangles.push({
+    for (let i = 0; i < circleCount; i++) {
+      circles.push({
         size: Math.random() * 60 + 20,
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -58,7 +58,7 @@ export function createTrianglesAnimation(canvas: HTMLCanvasElement) {
     }
   }
   
-  createTriangles();
+  createCircles();
   
   // Animation loop
   function animate() {
@@ -66,86 +66,28 @@ export function createTrianglesAnimation(canvas: HTMLCanvasElement) {
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    triangles.forEach(triangle => {
+    circles.forEach(circle => {
       // Update position
-      triangle.x += triangle.velocity.x;
-      triangle.y += triangle.velocity.y;
-      triangle.rotation += triangle.rotationSpeed;
+      circle.x += circle.velocity.x;
+      circle.y += circle.velocity.y;
+      circle.rotation += circle.rotationSpeed;
       
       // Bounce off edges
-      if (triangle.x < 0 || triangle.x > canvas.width) triangle.velocity.x *= -1;
-      if (triangle.y < 0 || triangle.y > canvas.height) triangle.velocity.y *= -1;
+      if (circle.x < 0 || circle.x > canvas.width) circle.velocity.x *= -1;
+      if (circle.y < 0 || circle.y > canvas.height) circle.velocity.y *= -1;
       
-      // Draw triangle with rounded corners
+      // Draw circle
       ctx.save();
-      ctx.translate(triangle.x, triangle.y);
-      ctx.rotate(triangle.rotation);
-      ctx.globalAlpha = triangle.opacity;
+      ctx.translate(circle.x, circle.y);
+      ctx.rotate(circle.rotation);
+      ctx.globalAlpha = circle.opacity;
       
-      // Define the three points of the triangle
-      const topPoint = { x: 0, y: -triangle.size / 2 };
-      const leftPoint = { x: -triangle.size / 2, y: triangle.size / 2 };
-      const rightPoint = { x: triangle.size / 2, y: triangle.size / 2 };
-      
-      // Radius for rounded corners (adjust as needed)
-      const radius = triangle.size / 8;
-      
+      // Draw a perfect circle
       ctx.beginPath();
-      
-      // Helper function to draw a rounded corner
-      const drawRoundedCorner = (p1: {x: number, y: number}, p2: {x: number, y: number}, p3: {x: number, y: number}) => {
-        // Find direction vectors
-        const v1 = { x: p1.x - p2.x, y: p1.y - p2.y };
-        const v2 = { x: p3.x - p2.x, y: p3.y - p2.y };
-        
-        // Normalize vectors
-        const len1 = Math.sqrt(v1.x * v1.x + v1.y * v1.y);
-        const len2 = Math.sqrt(v2.x * v2.x + v2.y * v2.y);
-        
-        const uv1 = { x: v1.x / len1, y: v1.y / len1 };
-        const uv2 = { x: v2.x / len2, y: v2.y / len2 };
-        
-        // Calculate rounded corner points
-        const cornerPoint = p2;
-        const startPoint = { 
-          x: cornerPoint.x + uv1.x * radius, 
-          y: cornerPoint.y + uv1.y * radius 
-        };
-        const endPoint = { 
-          x: cornerPoint.x + uv2.x * radius, 
-          y: cornerPoint.y + uv2.y * radius 
-        };
-        
-        // Draw lines and arc
-        ctx.lineTo(startPoint.x, startPoint.y);
-        
-        // Calculate control points for arc
-        const angle1 = Math.atan2(uv1.y, uv1.x);
-        const angle2 = Math.atan2(uv2.y, uv2.x);
-        
-        ctx.arc(
-          cornerPoint.x, 
-          cornerPoint.y, 
-          radius, 
-          angle1, 
-          angle2, 
-          false
-        );
-        
-        return endPoint;
-      };
-      
-      // Start at the right point (to avoid issues with the first rounded corner)
-      ctx.moveTo(rightPoint.x, rightPoint.y);
-      
-      // Draw rounded corners
-      drawRoundedCorner(leftPoint, rightPoint, topPoint);
-      drawRoundedCorner(rightPoint, topPoint, leftPoint);
-      drawRoundedCorner(topPoint, leftPoint, rightPoint);
-      
+      ctx.arc(0, 0, circle.size / 2, 0, Math.PI * 2);
       ctx.closePath();
       
-      ctx.fillStyle = triangle.color;
+      ctx.fillStyle = circle.color;
       ctx.fill();
       
       ctx.restore();

@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
-import { createTrianglesAnimation } from "@/lib/animation";
+import { createCirclesAnimation } from "@/lib/animation";
 
-export default function TriangleBackground() {
+export default function CircleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
     
-    const cleanup = createTrianglesAnimation(canvasRef.current);
+    const cleanup = createCirclesAnimation(canvasRef.current);
     
     return () => {
       cleanup();
