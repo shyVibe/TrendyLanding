@@ -59,7 +59,9 @@ app.use((req, res, next) => {
   // Use the port provided by the environment (for Vercel) or default to 5000
   // this serves both the API and the client
   const port = process.env.PORT || 5000;
-  server.listen(5000, "0.0.0.0", () => {
-    log(`Server running at http://0.0.0.0:5000`);
+  const host = process.env.VERCEL ? '127.0.0.1' : '0.0.0.0';
+  
+  server.listen(port, host, () => {
+    log(`Server running at http://${host}:${port}`);
   });
 })();
