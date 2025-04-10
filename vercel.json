@@ -5,16 +5,8 @@
   "framework": "vite",
   "rewrites": [
     {
-<<<<<<< HEAD
       "source": "/api/:path*",
       "destination": "/api/:path*"
-=======
-      "src": "api/index.js",
-      "use": "@vercel/node@2.15.11"
-    },
-    {
-      "src": "dist/public/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -48,7 +40,6 @@
           "value": "1; mode=block"
         }
       ]
->>>>>>> e2ad957 (Prepare for Vercel deployment by optimizing build process and database handling.)
     }
   ],
   "routes": [
