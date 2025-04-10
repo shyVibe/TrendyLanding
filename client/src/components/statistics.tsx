@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "93%", label: "Increase in qualified leads" },
-  { value: "2.8x", label: "Return on marketing investment" },
-  { value: "45%", label: "Reduction in acquisition costs" }
+  { value: "250+", label: "Pro Players on Our Team" },
+  { value: "15,000+", label: "Students Coached" },
+  { value: "85%", label: "Rank Improvement Rate" }
 ];
 
 export default function Statistics() {

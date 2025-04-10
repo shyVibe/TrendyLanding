@@ -1,36 +1,36 @@
 import { motion } from "framer-motion";
-import { Zap, BarChart3, Cloud, Clock, Users, ClipboardList } from "lucide-react";
+import { Zap, Target, Cpu, Gamepad2, Users, Trophy, Swords } from "lucide-react";
 
 const features = [
   {
+    icon: <Gamepad2 className="h-10 w-10" />,
+    title: "Game-Specific Coaching",
+    description: "Expert coaching for popular games including League of Legends, Valorant, CS:GO, Dota 2, and more."
+  },
+  {
+    icon: <Target className="h-10 w-10" />,
+    title: "Skill Assessment",
+    description: "Detailed analysis of your gameplay with personalized feedback to identify improvement areas."
+  },
+  {
     icon: <Zap className="h-10 w-10" />,
-    title: "Targeted Lead Generation",
-    description: "Attract high-quality leads that match your ideal customer profile."
+    title: "Live 1-on-1 Sessions",
+    description: "Real-time coaching with pro players who provide immediate feedback during your matches."
   },
   {
-    icon: <BarChart3 className="h-10 w-10" />,
-    title: "Conversion Optimization",
-    description: "Turn visitors into customers with data-driven optimization strategies."
-  },
-  {
-    icon: <Cloud className="h-10 w-10" />,
-    title: "Cloud Analytics",
-    description: "Gain deep insights with our advanced analytics platform."
-  },
-  {
-    icon: <Clock className="h-10 w-10" />,
-    title: "Automation Tools",
-    description: "Save time and resources with powerful workflow automation."
+    icon: <Cpu className="h-10 w-10" />,
+    title: "Strategy Development",
+    description: "Learn advanced tactics, meta strategies, and decision-making skills to outplay your opponents."
   },
   {
     icon: <Users className="h-10 w-10" />,
-    title: "Customer Segmentation",
-    description: "Target specific audiences with personalized messaging."
+    title: "Team Coaching",
+    description: "Group coaching for your entire team focusing on coordination, communication, and synergy."
   },
   {
-    icon: <ClipboardList className="h-10 w-10" />,
-    title: "Campaign Management",
-    description: "Create, manage and optimize all your marketing campaigns."
+    icon: <Trophy className="h-10 w-10" />,
+    title: "Tournament Preparation",
+    description: "Specialized coaching programs to prepare you for competitive tournaments and leagues."
   }
 ];
 
@@ -40,10 +40,10 @@ export default function Features() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Powerful Features to Drive Growth
+            Elite Coaching Services
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Our comprehensive solution provides everything you need to accelerate business results.
+            Our professional coaching services are designed to help you master your game and climb the ranks.
           </p>
         </div>
         

@@ -3,15 +3,15 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const testimonials = [
   {
-    content: "Within 3 months of implementing their strategies, we saw a 200% increase in qualified leads and a 40% boost in conversion rates. The ROI has been incredible.",
-    name: "Michael Thompson",
-    title: "CEO, Innovative Tech",
+    content: "After just 10 coaching sessions, I climbed from Silver to Platinum in League of Legends. My coach identified critical mistakes in my gameplay that I never realized I was making. The improvement has been incredible!",
+    name: "Alex Chen",
+    title: "League of Legends Player",
     stars: 5
   },
   {
-    content: "The team's expertise in lead generation transformed our business. We reduced customer acquisition costs by 35% while increasing our monthly leads by over 150%.",
-    name: "Sarah Johnson",
-    title: "Marketing Director, Growth Solutions",
+    content: "Our team had been stuck in the same rank for months. The team coaching sessions completely transformed our coordination and strategy. We qualified for our first regional tournament last month!",
+    name: "Emma Rodriguez",
+    title: "Valorant Team Captain",
     stars: 5
   }
 ];
@@ -22,10 +22,10 @@ export default function Testimonials() {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            What Our Clients Say
+            Success Stories
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Success stories from businesses that have transformed their growth trajectory.
+            Hear from players who have transformed their gameplay and climbed the ranks with our coaching.
           </p>
         </div>
         

@@ -80,7 +80,7 @@ export default function Footer() {
           >
             <Link href="/">
               <span className="text-white font-bold text-2xl mb-6 block cursor-pointer">
-                Growth<span className="text-primary">Hub</span>
+                Esports<span className="text-primary">Coach</span>
               </span>
             </Link>
             <p className="text-gray-400">
@@ -133,7 +133,7 @@ export default function Footer() {
         
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 mb-4 md:mb-0">
-            © {new Date().getFullYear()} GrowthHub. All rights reserved.
+            © {new Date().getFullYear()} EsportsCoach. All rights reserved.
           </div>
           <div className="flex space-x-6">
             {socialLinks.map((link, index) => (

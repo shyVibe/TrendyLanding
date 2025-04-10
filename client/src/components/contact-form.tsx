@@ -73,9 +73,9 @@ export default function ContactForm() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Ready to Accelerate Your Growth?</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">Ready to Level Up Your Skills?</h2>
               <p className="text-gray-300 mb-8">
-                Get in touch today and discover how our solutions can transform your business results.
+                Book your coaching session today and start your journey to becoming a better player.
               </p>
               
               <div className="space-y-4">
@@ -83,13 +83,13 @@ export default function ContactForm() {
                   <div className="text-primary">
                     <Mail className="h-6 w-6" />
                   </div>
-                  <span className="text-gray-300">contact@growthhub.com</span>
+                  <span className="text-gray-300">contact@esportscoach.com</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="text-primary">
                     <Phone className="h-6 w-6" />
                   </div>
-                  <span className="text-gray-300">(800) 123-4567</span>
+                  <span className="text-gray-300">(800) 732-4562</span>
                 </div>
               </div>
             </div>
@@ -145,12 +145,12 @@ export default function ContactForm() {
                       name="company"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-300">Company Name</FormLabel>
+                          <FormLabel className="text-gray-300">Game/Platform</FormLabel>
                           <FormControl>
                             <Input 
                               {...field} 
                               className="bg-black border-gray-700 text-white" 
-                              placeholder="Your Company"
+                              placeholder="Valorant, League of Legends, etc."
                             />
                           </FormControl>
                           <FormMessage />
@@ -192,7 +192,7 @@ export default function ContactForm() {
                         </span>
                       ) : (
                         <span className="flex items-center justify-center">
-                          Get Started
+                          Book Coaching
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                           </svg>

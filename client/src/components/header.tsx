@@ -11,7 +11,7 @@ export default function Header() {
         <div className="flex items-center">
           <Link href="/">
             <span className="text-white font-bold text-2xl cursor-pointer">
-              Growth<span className="text-primary">Hub</span>
+              Esports<span className="text-primary">Coach</span>
             </span>
           </Link>
         </div>

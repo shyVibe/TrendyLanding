@@ -4,23 +4,23 @@ export default function Hero() {
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Accelerate Your Business Growth Today
+            Level Up Your Gaming Skills Today
           </h1>
           <p className="text-xl text-gray-300 mb-10">
-            Discover proven strategies that drive leads, conversions, and revenue for your business.
+            Professional esports coaching for players of all skill levels. From beginner to pro, we'll help you dominate the competition.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <a 
               href="#contact" 
               className="bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-md transition transform hover:scale-105"
             >
-              Get Started Free
+              Book Free Session
             </a>
             <a 
               href="#features" 
               className="bg-transparent border border-white text-white font-semibold py-3 px-8 rounded-md hover:bg-white hover:text-black transition transform hover:scale-105"
             >
-              Learn More
+              Our Coaching
             </a>
           </div>
         </div>
