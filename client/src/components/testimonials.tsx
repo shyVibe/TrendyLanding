@@ -13,6 +13,30 @@ const testimonials = [
     name: "Emma Rodriguez",
     title: "Valorant Team Captain",
     stars: 5
+  },
+  {
+    content: "I went from hardstuck Gold to Diamond in just 6 weeks with EsportsCoach. My coach's personalized aim training routine and positioning tips completely changed my Overwatch gameplay!",
+    name: "Marcus Johnson",
+    title: "Overwatch Player",
+    stars: 5
+  },
+  {
+    content: "The macro game insights I learned from my Dota 2 coach were eye-opening. My map awareness and decision-making improved dramatically, and I finally broke through to Immortal rank.",
+    name: "Sophia Park",
+    title: "Dota 2 Player",
+    stars: 5
+  },
+  {
+    content: "As a CS:GO player struggling with consistency, my coach helped me develop a proper practice routine. My K/D ratio improved by 30% and I've finally achieved Global Elite status.",
+    name: "David Thompson",
+    title: "CS:GO Player",
+    stars: 5
+  },
+  {
+    content: "I was skeptical about coaching for mobile games, but my Wild Rift coach completely changed my perspective. Made it to Challenger with their lane control and objective timing strategies.",
+    name: "Olivia Williams",
+    title: "Wild Rift Player",
+    stars: 5
   }
 ];
 

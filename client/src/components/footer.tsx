@@ -2,17 +2,17 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 const companyLinks = [
-  { label: "About Us", href: "#" },
-  { label: "Careers", href: "#" },
+  { label: "About Us", href: "#features" },
+  { label: "Careers", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
-  { label: "Blog", href: "#" },
+  { label: "Blog", href: "#testimonials" },
 ];
 
 const resourceLinks = [
-  { label: "Documentation", href: "#" },
-  { label: "Guides", href: "#" },
-  { label: "API Reference", href: "#" },
-  { label: "Support", href: "#" },
+  { label: "Documentation", href: "#features" },
+  { label: "Guides", href: "#features" },
+  { label: "Game Coaching", href: "#testimonials" },
+  { label: "Support", href: "#contact" },
 ];
 
 const legalLinks = [
@@ -133,7 +133,7 @@ export default function Footer() {
         
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 mb-4 md:mb-0">
-            © {new Date().getFullYear()} EsportsCoach. All rights reserved.
+            © 2012 EsportsCoach. All rights reserved.
           </div>
           <div className="flex space-x-6">
             {socialLinks.map((link, index) => (
