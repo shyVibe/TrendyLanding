@@ -11,7 +11,7 @@ export default function Header() {
         <div className="flex items-center">
           <Link href="/">
             <span className="text-white font-bold text-2xl cursor-pointer">
-              Esports<span className="text-primary">Coach</span>
+              Esports<span className="text-primary">Coaching</span>
             </span>
           </Link>
         </div>

@@ -1,6 +1,6 @@
 # Deploying to Vercel
 
-This guide provides instructions for deploying the EsportsCoach landing page to Vercel.
+This guide provides instructions for deploying the EsportsCoaching landing page to Vercel.
 
 ## Prerequisites
 

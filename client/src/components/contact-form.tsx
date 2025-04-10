@@ -83,7 +83,7 @@ export default function ContactForm() {
                   <div className="text-primary">
                     <Mail className="h-6 w-6" />
                   </div>
-                  <span className="text-gray-300">contact@esportscoach.com</span>
+                  <span className="text-gray-300">contact@esportscoaching.com</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="text-primary">

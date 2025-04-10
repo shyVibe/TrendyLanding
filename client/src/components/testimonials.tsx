@@ -15,7 +15,7 @@ const testimonials = [
     stars: 5
   },
   {
-    content: "I went from hardstuck Gold to Diamond in just 6 weeks with EsportsCoach. My coach's personalized aim training routine and positioning tips completely changed my Overwatch gameplay!",
+    content: "I went from hardstuck Gold to Diamond in just 6 weeks with EsportsCoaching. My coach's personalized aim training routine and positioning tips completely changed my Overwatch gameplay!",
     name: "Marcus Johnson",
     title: "Overwatch Player",
     stars: 5
