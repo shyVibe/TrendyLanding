@@ -1,31 +1,43 @@
-# Deploying to Vercel
+# Deploying EsportsCoaching to Vercel
 
-This guide provides instructions for deploying the EsportsCoaching landing page to Vercel.
+This guide provides detailed instructions for deploying the EsportsCoaching landing page to Vercel with proper serverless functionality and database connection.
 
 ## Prerequisites
 
 1. A [Vercel account](https://vercel.com/signup)
 2. A [GitHub account](https://github.com/join) (recommended for easy deployment)
 3. [Git](https://git-scm.com/downloads) installed on your local machine
-4. [Node.js](https://nodejs.org/) installed on your local machine
+4. [Node.js](https://nodejs.org/) (version 18 or higher) installed on your local machine
 
 ## Setting up the Database
 
-This application uses PostgreSQL, which needs to be set up before deployment.
+This application requires PostgreSQL for storing lead information:
 
-1. Create a PostgreSQL database on a service like [Neon](https://neon.tech/) or [Supabase](https://supabase.com/)
-2. Save your database connection string (it should look like `postgresql://username:password@hostname:port/database`)
+1. Create a PostgreSQL database on [Neon](https://neon.tech/) (recommended for Vercel compatibility)
+   - Sign up for a free account
+   - Create a new project
+   - Create a new database within your project
+   - Navigate to the "Connection Details" tab
+   - Obtain your database connection string
+
+2. The connection string format should be: 
+   ```
+   postgresql://username:password@hostname:port/database?sslmode=require
+   ```
+
+3. **Important**: Make sure to enable the "Pooled connection" option in Neon for better serverless performance
 
 ## Deployment Steps
 
-### Option 1: Deploy from GitHub (Recommended)
+### Option 1: Deploy from Vercel Dashboard (Recommended)
 
 1. Push your code to a GitHub repository:
    ```bash
    git init
    git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/yourusername/your-repo-name.git
+   git commit -m "Initial commit for EsportsCoaching"
+   git branch -M main
+   git remote add origin https://github.com/yourusername/esportscoaching.git
    git push -u origin main
    ```
 
@@ -33,16 +45,17 @@ This application uses PostgreSQL, which needs to be set up before deployment.
 3. Click "Add New" > "Project"
 4. Select your GitHub repository
 5. Configure the project:
-   - Framework Preset: Other
-   - Root Directory: ./
-   - Build Command: npm run build
-   - Output Directory: dist
-   - Install Command: npm install
+   - Framework Preset: **Other** (important: do not select Node.js)
+   - Root Directory: `./`
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
    
-   Note: If given the option, select "Override" for any settings rather than using framework defaults.
+   **Important**: Click "Override" when prompted rather than using framework defaults.
 
 6. In the "Environment Variables" section, add:
-   - `DATABASE_URL`: Your PostgreSQL connection string
+   - `DATABASE_URL`: Your PostgreSQL connection string from Neon
+   - `NODE_ENV`: `production`
 
 7. Click "Deploy"
 
@@ -63,47 +76,82 @@ This application uses PostgreSQL, which needs to be set up before deployment.
    vercel
    ```
 
-4. Follow the prompts and provide the required environment variables when asked
+4. Answer the CLI prompts:
+   - Set up and deploy: `y`
+   - Which scope: Select your account
+   - Link to existing project: `n`
+   - Project name: `esportscoaching` (or your preferred name)
+   - Directory: `.`
+   - Override settings: `y`
+   - Build command: `npm run build`
+   - Output directory: `dist`
+   - Development command: Leave blank (press Enter)
+   - Want to override the settings: `n`
 
-## After Deployment
+5. Set environment variables:
+   ```bash
+   vercel env add DATABASE_URL
+   ```
+   Then enter your PostgreSQL connection string when prompted.
 
-1. Once deployed, Vercel will provide you with a production URL (e.g., `https://your-project.vercel.app`)
-2. Test your website thoroughly to ensure all features are working correctly
-3. Set up a custom domain if needed through the Vercel dashboard
+## Verifying Your Deployment
 
-## Monitoring and Maintenance
+1. After deployment completes, Vercel will provide you with a production URL (e.g., `https://esportscoaching.vercel.app`)
+2. Test the website thoroughly:
+   - Check that all pages load correctly
+   - Test the contact form submission
+   - Verify animations and responsive design on different devices
 
-- Monitor your application's performance and errors through the Vercel dashboard
-- For any database issues, check your PostgreSQL database logs
+## Production Optimizations
+
+1. **Set up a custom domain**:
+   - In the Vercel dashboard, go to your project
+   - Click on "Domains"
+   - Add your custom domain and follow the verification steps
+
+2. **Enable Caching**:
+   - Already configured in `vercel.json` with optimal cache headers
+   - Assets will be cached for 1 year with immutability settings
+
+3. **Analytics and Monitoring**:
+   - Enable Vercel Analytics in your project settings
+   - Set up status alerts for notifications if your site goes down
+
+## Database Maintenance
+
+1. **Backup Strategy**:
+   - Neon automatically provides backup capabilities
+   - Set up scheduled backups in your Neon dashboard
+
+2. **Connection Pooling**:
+   - Our application is configured to use Neon's connection pooling
+   - The `vercel-db.ts` file handles efficient connection reuse
 
 ## Troubleshooting
 
 If you encounter issues during deployment:
 
-1. Check the build logs in the Vercel dashboard
-2. Ensure your database connection string is correct
-3. Verify that all required environment variables are set
-4. Check for any syntax errors in your code
+1. **Database Connection Issues**:
+   - Verify that your PostgreSQL connection string includes `?sslmode=require`
+   - Ensure you've enabled pooled connections in Neon
+   - Check Neon dashboard for connection limits or errors
 
-### Common Issues:
+2. **API Routes Not Working**:
+   - Verify paths start with `/api` in your fetch requests
+   - Check Vercel Functions logs in your Vercel dashboard
+   - Our custom API handler in `api/index.js` should automatically route requests
 
-1. **Database Connection Errors:**
-   - Verify that your PostgreSQL database allows connections from Vercel's IP addresses
-   - Ensure DATABASE_URL includes all required parameters (username, password, host, port, database name)
-   - Try using a connection pooling option if available with your database provider
+3. **Static Asset Issues**:
+   - Assets should be in `dist/public/assets` after build
+   - Check that the paths in HTML reference `/assets/filename` correctly
 
-2. **Build Failures:**
-   - Check if the build process is failing due to ESM/CJS module issues
-   - Verify node version compatibility (Vercel uses Node.js 18 by default)
-   - Ensure all dependencies are properly listed in package.json
+4. **Build Failures**:
+   - Look for specific error messages in the Vercel build logs
+   - Common ESM/CJS issues are fixed in our optimized configuration
+   - We use Node.js 18 compatibility in the Vercel configuration
 
-3. **API Routes Not Working:**
-   - Check that the routes in vercel.json are correctly configured
-   - Verify that serverless functions are properly exporting handler functions
-   - Test API routes with the correct path prefix (/api/...)
+## Getting Support
 
-4. **Static Assets Missing:**
-   - Ensure assets are being correctly built into the dist directory
-   - Check that the outputDirectory setting in vercel.json matches your build output folder
-
-For more help, refer to the [Vercel documentation](https://vercel.com/docs) or contact Vercel support.
+- For technical issues with the codebase, create an issue in your GitHub repository
+- For Vercel-specific deployment issues, refer to [Vercel Support](https://vercel.com/support)
+- For database issues, check [Neon documentation](https://neon.tech/docs/)
