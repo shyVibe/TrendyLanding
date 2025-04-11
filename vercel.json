@@ -5,8 +5,50 @@
   "framework": "vite",
   "rewrites": [
     {
+<<<<<<< HEAD
       "source": "/api/:path*",
       "destination": "/api/:path*"
+=======
+      "src": "api/index.js",
+      "use": "@vercel/node@2.15.11"
+    },
+    {
+      "src": "dist/public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api" },
+    { 
+      "src": "/assets/(.*)", 
+      "dest": "/dist/public/assets/$1",
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+    },
+    { "src": "/(.*)", "dest": "/dist/public/$1" }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "VERCEL": "1"
+  },
+  "regions": ["iad1", "sfo1"],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+>>>>>>> e2ad957 (Prepare for Vercel deployment by optimizing build process and database handling.)
     }
   ],
   "routes": [
